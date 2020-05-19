@@ -35,8 +35,9 @@ class SseStream extends Stream.Transform {
       destination.writeHead(200, {
         'Content-Type': 'text/event-stream; charset=utf-8',
         'Transfer-Encoding': 'identity',
-        'Cache-Control': 'no-cache',
+        'Cache-Control': 'no-cache, no-transform',
         Connection: 'keep-alive',
+        'X-Accel-Buffering': 'no'
       })
       destination.flushHeaders()
     }
